@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.breezil.favnews.R;
 import com.example.breezil.favnews.databinding.ActivitySettingsBinding;
@@ -34,6 +35,10 @@ public class SettingsActivity extends DaggerAppCompatActivity implements HasSupp
         binding = DataBindingUtil.setContentView(this,R.layout.activity_settings);
 
         setupBottomNavigation();
+
+        binding.aboutText.setOnClickListener(v -> {
+            startActivity(new Intent(this, AboutActivity.class));
+        });
 
     }
 

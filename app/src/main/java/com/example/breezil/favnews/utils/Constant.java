@@ -5,6 +5,7 @@ import com.example.breezil.favnews.BuildConfig;
 public class Constant {
 
     public static String API_KEY = BuildConfig.API_KEY;
+    public static String BASE_URL = BuildConfig.BASE_URL;
     public static String ARTICLE = "article";
     public static String BOOKMARK = "bookmark";
     public static String SOURCENAME = "source";
@@ -16,6 +17,7 @@ public class Constant {
     public static String BOOKMARK_FRAGMENT = "BookMarks";
     public static String BOOKMARK_ID = "BookMarksID";
     public static String SEARCH_RESULT = "Search Result";
+    public static String ABOUT = "About";
 
 
 }

@@ -14,13 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -30,6 +24,16 @@
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SettingsActivity" />
+        <activity
+            android:name=".ui.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.AboutActivity"></activity>
     </application>
 
 </manifest>

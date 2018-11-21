@@ -1,11 +1,9 @@
 package com.example.breezil.favnews.repository;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.os.AsyncTask;
 
-import com.example.breezil.favnews.Api.NewsApi;
+import com.example.breezil.favnews.api.NewsApi;
 import com.example.breezil.favnews.db.AppDatabase;
 import com.example.breezil.favnews.model.ArticleResult;
 import com.example.breezil.favnews.model.Articles;

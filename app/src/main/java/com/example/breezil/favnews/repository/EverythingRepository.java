@@ -1,22 +1,12 @@
 package com.example.breezil.favnews.repository;
 
-import android.app.Application;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import com.example.breezil.favnews.Api.NewsApi;
+import com.example.breezil.favnews.api.NewsApi;
 import com.example.breezil.favnews.db.AppDatabase;
 import com.example.breezil.favnews.model.ArticleResult;
 import com.example.breezil.favnews.model.Articles;
-import com.example.breezil.favnews.utils.helpers.ApiResponse;
-import com.example.breezil.favnews.utils.helpers.AppExecutors;
 
 import java.util.List;
 

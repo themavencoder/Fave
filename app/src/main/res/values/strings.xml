@@ -312,109 +312,23 @@
     <string name="pref_everything_sort_by_key" translatable="false">sort-by</string>
     <!--endregion-->
 
-    <!--region Everything SortBy-->
-    <string name="pref_everything_language_label">Language</string>
 
-    <string name="pref_everything_language_label_all">None</string>
-    <string name="pref_everything_language_all_value" translatable="false"></string>
+    <string name="about_description">FavNews an awesome app.\n\n Where you can keep up on your latest and favorite world news from any cable source around the world, Build with Android Architecture Components(MVVM), also implemented Dagger2. This app let you sortby your favorite news source and mark news as bookmark to read later. \n\n Made with love by Kola Emiola and Api by NewsApi.org </string>
+    <string name="contacts">Contact</string>
+    <string name="email">kolajubril@gmail.com</string>
+    <string name="email_title">Email</string>
+    <string name="web">http://www.kolaemiola.xyz/</string>
+    <string name="website">My Website</string>
+    <string name="github">breel93</string>
+    <string name="ongithub">github</string>
+    <string name="twitter">kola_emi</string>
+    <string name="ontwitter">twitter</string>
+    <string name="library_used">Library Used</string>
+    <string name="open_source_libs">Open Source Libraries</string>
+    <string name="version">Version: 1.0</string>
+    <string name="libraries">Libraries</string>
+    <string name="copy_right">Copyrights © %1$d</string>
 
-    <string name="pref_everything_language_label_arabic">Arabic</string>
-    <string name="pref_everything_language_ar_value" translatable="false">ar</string>
-
-    <string name="pref_everything_language_label_chinese">Chinese</string>
-    <string name="pref_everything_language_zh_value" translatable="false">zh</string>
-
-    <string name="pref_everything_language_label_english">English</string>
-    <string name="pref_everything_language_en_value" translatable="false">en</string>
-
-    <string name="pref_everything_language_label_french">French</string>
-    <string name="pref_everything_language_fr_value" translatable="false">fr</string>
-
-    <string name="pref_everything_language_label_german">German</string>
-    <string name="pref_everything_language_de_value" translatable="false">de</string>
-
-    <string name="pref_everything_language_label_hebrew">Hebrew</string>
-    <string name="pref_everything_language_he_value" translatable="false">he</string>
-
-    <string name="pref_everything_language_label_italian">Italian</string>
-    <string name="pref_everything_language_it_value" translatable="false">it</string>
-
-    <string name="pref_everything_language_label_netherlandish">Netherlandish</string>
-    <string name="pref_everything_language_nl_value" translatable="false">nl</string>
-
-    <string name="pref_everything_language_label_norwegian">Norwegian</string>
-    <string name="pref_everything_language_no_value" translatable="false">no</string>
-
-    <string name="pref_everything_language_label_portuguese">Portuguese</string>
-    <string name="pref_everything_language_pt_value" translatable="false">pt</string>
-
-    <string name="pref_everything_language_label_russian">Russian</string>
-    <string name="pref_everything_language_ru_value" translatable="false">ru</string>
-
-    <string name="pref_everything_language_label_spanish">Spanish</string>
-    <string name="pref_everything_language_es_value" translatable="false">es</string>
-
-    <string name="pref_everything_language_label_swedish">Swedish</string>
-    <string name="pref_everything_language_se_value" translatable="false">se</string>
-
-    <string name="pref_everything_language_label_urdu">Urdu</string>
-    <string name="pref_everything_language_ud_value" translatable="false">ud</string>
-
-    <string name="pref_everything_language_key" translatable="false">everything-language</string>
-    <!--endregion-->
-
-
-    <!--region Source Languages -->
-    <string name="pref_language_label">Language</string>
-    <string name="pref_language_summary">News sources from the selected language will be displayed.</string>
-
-    <string name="pref_language_label_all">None</string>
-    <string name="pref_language_all_value" translatable="false"></string>
-
-    <string name="pref_language_label_arabic">Arabic</string>
-    <string name="pref_language_ar_value" translatable="false">ar</string>
-
-    <string name="pref_language_label_chinese">Chinese</string>
-    <string name="pref_language_zh_value" translatable="false">zh</string>
-
-    <string name="pref_language_label_english">English</string>
-    <string name="pref_language_en_value" translatable="false">en</string>
-
-    <string name="pref_language_label_french">French</string>
-    <string name="pref_language_fr_value" translatable="false">fr</string>
-
-    <string name="pref_language_label_german">German</string>
-    <string name="pref_language_de_value" translatable="false">de</string>
-
-    <string name="pref_language_label_hebrew">Hebrew</string>
-    <string name="pref_language_he_value" translatable="false">he</string>
-
-    <string name="pref_language_label_italian">Italian</string>
-    <string name="pref_language_it_value" translatable="false">it</string>
-
-    <string name="pref_language_label_netherlandish">Netherlandish</string>
-    <string name="pref_language_nl_value" translatable="false">nl</string>
-
-    <string name="pref_language_label_norwegian">Norwegian</string>
-    <string name="pref_language_no_value" translatable="false">no</string>
-
-    <string name="pref_language_label_portuguese">Portuguese</string>
-    <string name="pref_language_pt_value" translatable="false">pt</string>
-
-    <string name="pref_language_label_russian">Russian</string>
-    <string name="pref_language_ru_value" translatable="false">ru</string>
-
-    <string name="pref_language_label_spanish">Spanish</string>
-    <string name="pref_language_es_value" translatable="false">es</string>
-
-    <string name="pref_language_label_swedish">Swedish</string>
-    <string name="pref_language_se_value" translatable="false">se</string>
-
-    <string name="pref_language_label_urdu">Urdu</string>
-    <string name="pref_language_ud_value" translatable="false">ud</string>
-
-    <string name="pref_language_key" translatable="false">source-language</string>
-    <!--endregion-->
 
 
 </resources>

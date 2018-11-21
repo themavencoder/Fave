@@ -3,8 +3,9 @@ package com.example.breezil.favnews.di.module;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
-import com.example.breezil.favnews.Api.NewsApi;
+import com.example.breezil.favnews.api.NewsApi;
 import com.example.breezil.favnews.db.AppDatabase;
+import com.example.breezil.favnews.utils.Constant;
 import com.example.breezil.favnews.utils.helpers.LiveDataCallAdapterFactory;
 
 import javax.inject.Singleton;
@@ -20,7 +21,7 @@ public class AppModule {
     @Provides
     NewsApi provideNewsApi() {
         return new Retrofit.Builder()
-                .baseUrl("https://newsapi.org")
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
                 .build()

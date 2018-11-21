@@ -1,12 +1,9 @@
-package com.example.breezil.favnews.Api;
+package com.example.breezil.favnews.api;
 
-import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.breezil.favnews.model.ArticleResult;
-import com.example.breezil.favnews.model.Articles;
-import com.example.breezil.favnews.utils.helpers.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
