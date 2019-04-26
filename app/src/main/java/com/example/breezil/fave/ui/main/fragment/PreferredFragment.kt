@@ -23,7 +23,7 @@ import com.example.breezil.fave.ui.adapter.ArticleRecyclerViewAdapter
 import com.example.breezil.fave.ui.bottom_sheets.ActionBottomSheetFragment
 import com.example.breezil.fave.ui.bottom_sheets.DescriptionBottomSheetFragment
 import com.example.breezil.fave.ui.main.viewmodel.PreferredViewModel
-import com.example.breezil.fave.utils.Constant
+import com.example.breezil.fave.utils.Constant.Companion.DEFAULT_SOURCE
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -36,7 +36,7 @@ class PreferredFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private var articleAdapter: ArticleRecyclerViewAdapter? = null
+    private var  articleAdapter: ArticleRecyclerViewAdapter? = null
     lateinit var binding: FragmentPreferredBinding
     lateinit var viewModel: PreferredViewModel
     lateinit var sharedPreferences: SharedPreferences
@@ -94,7 +94,9 @@ class PreferredFragment : Fragment() {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(PreferredViewModel::class.java)
-        sortBy = sharedPreferences.getString(getString(R.string.pref_everything_sort_by_key), null)
+        sortBy = sharedPreferences.getString(getString(R.string.pref_everything_sort_by_key), "")
+
+
         setUpAdapter()
         setupViewModel()
     }
@@ -131,7 +133,7 @@ class PreferredFragment : Fragment() {
                     R.color.colorblue, R.color.hotPink)
 
 
-            viewModel.setParameter("", Constant.DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
+            viewModel.setParameter("", DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
             viewModel.articlesList.observe(this, Observer{ articles -> articleAdapter!!.submitList(articles) })
 
             viewModel.getNetworkState().observe(this, Observer{ networkState ->
@@ -154,7 +156,7 @@ class PreferredFragment : Fragment() {
 
 
     private fun refresh() {
-        viewModel.setParameter("", Constant.DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
+        viewModel.setParameter("", DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
         viewModel.refreshArticle().observe(this, Observer
                 { articles -> articleAdapter!!.submitList(articles) })
         binding.swipeRefresh.isRefreshing = false
