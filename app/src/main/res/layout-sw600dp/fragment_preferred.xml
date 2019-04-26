@@ -2,12 +2,19 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.PreferredFragment">
+    tools:context=".ui.main.fragment.PreferredFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/preferred_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.GridLayoutManager"
-        app:spanCount="3"/>
+        android:visibility="gone">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/preferred_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="3"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </layout>

@@ -5,7 +5,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundcolor">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -14,7 +15,8 @@
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            android:background="@drawable/greyborderbottom"
+            android:background="?attr/actionbarcolor"
+            android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +30,8 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:background="@drawable/greyborderbottom"
+                android:background="?attr/actionbarcolor"
+                android:theme="@style/AppTheme.AppBarOverlay"
                 app:tabGravity="fill"
                 app:tabMode="fixed" />
         </android.support.design.widget.AppBarLayout>
@@ -53,6 +55,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:labelVisibilityMode="labeled"
+            android:background="?attr/backgroundcolor"
+            app:itemTextColor="@drawable/item_color"
+            app:itemIconTint="@drawable/item_color"
             app:menu="@menu/bottomnavigationmenu">
 
         </android.support.design.widget.BottomNavigationView>

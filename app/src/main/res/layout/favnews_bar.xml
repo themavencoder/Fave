@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainAppBar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    android:paddingTop="10dp"
-    android:title="@string/app_name">
+    android:layout_height="60dp"
+    android:background="?attr/actionbarcolor"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    android:paddingTop="10dp">
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorWhite"
+        android:text="Fave"/>
 
 </android.support.v7.widget.Toolbar>

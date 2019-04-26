@@ -5,10 +5,11 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:background="?attr/backgroundcolor"
         android:id="@+id/aboutLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.AboutActivity">
+        tools:context=".ui.preference.AboutActivity">
 
     </android.support.constraint.ConstraintLayout>
 </layout>

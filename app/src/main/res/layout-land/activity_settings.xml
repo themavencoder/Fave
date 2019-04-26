@@ -2,10 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-tools:context=".ui.SettingsActivity">
+tools:context=".ui.preference.SettingsActivity">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/backgroundcolor"
         >
 
         <LinearLayout
@@ -20,7 +21,7 @@ tools:context=".ui.SettingsActivity">
 
             <fragment
                 android:id="@+id/prefSettingsFragment"
-                android:name="com.example.breezil.favnews.ui.PrefFragment"
+                android:name="com.example.breezil.fave.ui.preference.PrefFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -51,6 +52,9 @@ tools:context=".ui.SettingsActivity">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="?attr/backgroundcolor"
+            app:itemTextColor="@drawable/item_color"
+            app:itemIconTint="@drawable/item_color"
             app:menu="@menu/bottomnavigationmenu">
 
         </android.support.design.widget.BottomNavigationView>

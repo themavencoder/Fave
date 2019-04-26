@@ -186,6 +186,33 @@
         <item>@string/pref_sources_wired_value</item>
     </array>
 
+    <array name="empty_array">
+
+    </array>
+
+    <array name="search_array">
+        <item>@string/pref_sources_wired_value</item>
+        <item>@string/pref_sources_abc_news_value</item>
+        <item>@string/pref_sources_al_jazeera_english_value</item>
+        <item>@string/pref_sources_the_washington_post_value</item>
+        <item>@string/pref_sources_the_new_york_times_value</item>
+        <item>@string/pref_sources_techcrunch_value</item>
+        <item>@string/pref_sources_techradar_value</item>
+        <item>@string/pref_sources_reddit_value</item>
+        <item>@string/pref_sources_mirror_value</item>
+        <item>@string/pref_sources_msnbc_value</item>
+        <item>@string/pref_sources_reuters_value</item>
+        <item>@string/pref_sources_google_news_value</item>
+        <item>@string/pref_sources_hacker_news_value</item>
+        <item>@string/pref_sources_engadget_value</item>
+        <item>@string/pref_sources_entertainment_weekly_value</item>
+        <item>@string/pref_sources_espn_value</item>
+        <item>@string/pref_sources_bbc_news_value</item>
+        <item>@string/pref_sources_bbc_sport_value</item>
+        <item>@string/pref_sources_bleacher_report_value</item>
+        <item>@string/pref_sources_bloomberg_value</item>
+    </array>
+
 
 
     <array name="pref_everything_sort_by_labels">

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/backgroundcolor"
+        tools:context=".ui.bottom_sheets.DescriptionBottomSheetFragment">
+
+        <ImageView
+            android:id="@+id/articleImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/articleTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/articleTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="?attr/tintcolor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/articleDescriptions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toEndOf="@+id/articleImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/articleDescriptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="?attr/articledescriptionText"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/articleSource"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/articleImage"
+            app:layout_constraintTop_toBottomOf="@+id/articleTitle" />
+
+        <TextView
+            android:id="@+id/articleSource"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="?attr/articledescriptionText"
+            android:gravity="end"
+            android:text="TextView"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/articleImage"
+            app:layout_constraintTop_toBottomOf="@+id/articleDescriptions" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
