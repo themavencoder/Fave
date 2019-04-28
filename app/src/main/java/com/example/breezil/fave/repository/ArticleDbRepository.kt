@@ -15,7 +15,6 @@ import javax.inject.Singleton
 class ArticleDbRepository @Inject
 constructor(application: Application) {
     private val articleDao: ArticleDao
-    private val articleList: LiveData<List<Articles>>? = null
 
     init {
         val database = AppDatabase.getAppDatabase(application)

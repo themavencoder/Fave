@@ -9,7 +9,7 @@ import android.content.Context
 import com.example.breezil.fave.model.Articles
 import com.example.breezil.fave.model.BookMark
 
-@Database(entities = [BookMark::class, Articles::class], version = 1, exportSchema = false)
+@Database(entities = arrayOf(BookMark::class, Articles::class), version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun bookMarkDao(): BookMarkDao
     abstract fun articleDao(): ArticleDao
@@ -20,7 +20,8 @@ abstract class AppDatabase : RoomDatabase() {
         @Synchronized
         fun getAppDatabase(context: Context): AppDatabase {
             if (appDatabase == null) {
-                appDatabase = Room.databaseBuilder(context.applicationContext,
+                appDatabase = Room.databaseBuilder(
+                        context.applicationContext,
                         AppDatabase::class.java, "article_db")
                         .fallbackToDestructiveMigration()
                         .build()

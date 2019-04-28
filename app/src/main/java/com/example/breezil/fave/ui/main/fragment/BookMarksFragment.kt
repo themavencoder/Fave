@@ -1,6 +1,7 @@
 package com.example.breezil.fave.ui.main.fragment
 
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -31,7 +32,7 @@ import dagger.android.support.AndroidSupportInjection
 class BookMarksFragment : Fragment() {
 
     lateinit var adapter: BookMarkRecyclerAdapter
-    private var bookMarkViewModel: BookMarkViewModel? = null
+    lateinit var bookMarkViewModel: BookMarkViewModel
 
     lateinit var binding: FragmentBookMarksBinding
 
@@ -44,7 +45,8 @@ class BookMarksFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_book_marks, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_book_marks, container,
+                false)
         binding.bookmarkList.setHasFixedSize(true)
 
 
@@ -80,9 +82,16 @@ class BookMarksFragment : Fragment() {
 
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setUpViewModel() {
         bookMarkViewModel = ViewModelProviders.of(this).get(BookMarkViewModel::class.java)
-        bookMarkViewModel!!.bookmarkList.observe(this, Observer{ bookMarks -> adapter.submitList(bookMarks) })
+        bookMarkViewModel.bookmarkList.observe(this, Observer{ bookMarks ->
+            if(!bookMarks!!.isEmpty()){
+                adapter.submitList(bookMarks)
+                binding.deleteAll.visibility = View.VISIBLE
+            }
+        })
+
     }
 
 
@@ -104,7 +113,6 @@ class BookMarksFragment : Fragment() {
     }
 
     private fun deleteAll() {
-        bookMarkViewModel!!.deleteAll()
+        bookMarkViewModel.deleteAll()
     }
-
-}// Required empty public constructor
+}

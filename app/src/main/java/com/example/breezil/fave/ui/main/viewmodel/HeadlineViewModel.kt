@@ -33,7 +33,7 @@ constructor(private val headlineDataSourceFactory: HeadlineDataSourceFactory,
 
     val fromDbList: LiveData<PagedList<Articles>>
         get() {
-            val factory = appDatabase.articleDao().pagedArticle
+            val factory = appDatabase.articleDao().pagedArticle()
             val livePagedListBuilder = LivePagedListBuilder(factory, FIVE)
             articlesDBList = livePagedListBuilder.build()
             return articlesDBList

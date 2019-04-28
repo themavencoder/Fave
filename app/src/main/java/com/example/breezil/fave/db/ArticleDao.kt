@@ -12,9 +12,9 @@ import com.example.breezil.fave.model.Articles
 @Dao
 interface ArticleDao {
 
-    @get:Transaction
-    @get:Query("SELECT * FROM article_table ORDER BY id ASC")
-    val pagedArticle: DataSource.Factory<Int, Articles>
+    @Transaction
+    @Query("SELECT * FROM article_table ORDER BY id ASC")
+    fun pagedArticle(): DataSource.Factory<Int, Articles>
 
     @Insert
     fun insert(articles: Articles)

@@ -114,7 +114,7 @@ class ArticleRecyclerViewAdapter(internal var context: Context, private val arti
                     .into(binding.articleImage)
 
             if (articles.source != null) {
-                binding.sourcesText.text = articles.source!!.name
+                binding.sourcesText.text = articles.source.name
             }
 
 

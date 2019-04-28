@@ -65,25 +65,24 @@ class ActionBottomSheetFragment : BottomSheetDialogFragment() {
         binding.fullArticle.setOnClickListener { startWeb(article) }
         binding.shareArticle.setOnClickListener { startSharing(article) }
         binding.bookMarkArticle.setOnClickListener {
-            val bookMarkViewModel = ViewModelProviders.of(this)
-                    .get(BookMarkViewModel::class.java)
-            Glide.with(activity!!)
-                    .load(article.urlToImage)
-                    .listener(object : RequestListener<Drawable> {
-                        override fun onLoadFailed(e: GlideException?, model: Any, target: Target<Drawable>, isFirstResource: Boolean): Boolean {
-                            return true
-                        }
 
-                        override fun onResourceReady(resource: Drawable, model: Any, target: Target<Drawable>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
-                            val bookMark = BookMark(article.author!!, article.title!!, article.description!!,
-                                    article.url!!, article.urlToImage!!, article.publishedAt!!, article.source!!.name!!, article.content!!)
-                            bookMarkViewModel.insert(bookMark)
+            startbookMark(article)
 
-                            Toast.makeText(this@ActionBottomSheetFragment.mContext, R.string.saved_bookmark, Toast.LENGTH_SHORT).show()
-                            return true
-                        }
-                    }).submit()
-            dismiss()
+//            Glide.with(this@ActionBottomSheetFragment.mContext!!)
+//                    .load(article.urlToImage)
+//                    .listener(object : RequestListener<Drawable> {
+//                        override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+//                            return true
+//                        }
+//
+//                        override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+//
+//                            startbookMark(article)
+//                            Toast.makeText(this@ActionBottomSheetFragment.mContext, R.string.saved_bookmark, Toast.LENGTH_SHORT).show()
+//                            return true
+//                        }
+//                    }).submit()
+//            dismiss()
         }
     }
 
@@ -100,6 +99,19 @@ class ActionBottomSheetFragment : BottomSheetDialogFragment() {
         }
         dismiss()
 
+    }
+
+
+    private fun startbookMark(article: Articles){
+        if (activity != null && isAdded) {
+            val bookMarkViewModel = ViewModelProviders.of(this)
+                    .get(BookMarkViewModel::class.java)
+            val bookMark = BookMark("", article.title, article.description,
+                    article.url, article.urlToImage, article.publishedAt, article.source.name, article.content)
+            bookMarkViewModel.insert(bookMark)
+            Toast.makeText(this@ActionBottomSheetFragment.mContext, R.string.saved_bookmark, Toast.LENGTH_SHORT).show()
+        }
+        dismiss()
     }
 
     private fun startWeb(articles: Articles) {
