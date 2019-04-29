@@ -59,9 +59,9 @@ constructor(private var endpointRepository: EndPointRepository,
                 TEN, ONE).subscribe({ articleResult ->
             onInitialSuccess(articleResult,
                     callback, articlesList)
-//            for (article in articleResult.articles) {
-//                articleDbRepository.insert(article)
-//            }
+            for (article in articleResult.articles) {
+                articleDbRepository.insert(article)
+            }
         }, { throwable -> onInitialError(throwable) })
         compositeDisposable.add(articles)
     }

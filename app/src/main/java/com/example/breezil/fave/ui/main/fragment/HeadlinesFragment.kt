@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.example.breezil.fave.R
 import com.example.breezil.fave.callbacks.ArticleLongClickListener
@@ -48,32 +49,38 @@ class HeadlinesFragment : Fragment() {
     private var source: String = ""
 
 
-//    val sourceList: String
-//        get() {
-//            val sourceSet = HashSet<String>()
-//            sourceSet.add(getString(R.string.pref_sources_all_value))
-//
-//            val entries = ArrayList((
-//                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
-//            val selectedSources = StringBuilder()
-//
-//            for (i in entries.indices) {
-//                selectedSources.append(entries[i]).append(",")
-//            }
-//
-//            if (selectedSources.isNotEmpty()) {
-//                selectedSources.deleteCharAt(selectedSources.length - 1)
-//            }
-//
-//
-//            return if (selectedSources.toString() == "") {
-//                source = "bbc-news,axios,cnn,daily-mail,espn"
-//            } else {
-//                source = selectedSources.toString()
-//
-//            }
-//
-//        }
+    private val sourceList: String
+        get() {
+
+            val sourceSet = HashSet<String>()
+            sourceSet.add(getString(R.string.pref_sources_all_value))
+
+            val entries = ArrayList((
+                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
+            val selectedSources = StringBuilder()
+
+            for (i in entries.indices) {
+                selectedSources.append(entries[i]).append(",")
+            }
+
+            if (selectedSources.isNotEmpty()) {
+                selectedSources.deleteCharAt(selectedSources.length - 1)
+            }
+
+
+
+            return if (selectedSources.isEmpty()) {
+                DEFAULT_SOURCE
+            } else {
+               selectedSources.toString()
+
+            }
+
+        }
+
+
+
+
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -84,12 +91,14 @@ class HeadlinesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_headlines, container, false)
         binding.headlineList.setHasFixedSize(true)
 
         if (internetConnected()) {
             binding.swipeRefresh.setOnRefreshListener { this.refresh() }
         }
+
 
         return binding.root
 
@@ -98,7 +107,7 @@ class HeadlinesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(HeadlineViewModel::class.java)
 
 
@@ -138,8 +147,18 @@ class HeadlinesFragment : Fragment() {
                     R.color.colorblue, R.color.hotPink)
             viewModel.deleteAllInDb()
 
-            viewModel.setParameter("", DEFAULT_SOURCE, "", "")
-            viewModel.articlesList.observe(this, Observer { articles -> articleAdapter!!.submitList(articles) })
+            viewModel.setParameter("", sourceList, "", "")
+            viewModel.articlesList.observe(this, Observer { articles
+                ->
+                articleAdapter!!.submitList(articles)
+//                if(articles!!.size > 0){
+//                    articleAdapter!!.submitList(articles)
+//                }else{
+//                    Toast.makeText(context, "Loading wait ...", Toast.LENGTH_LONG).show()
+//                }
+
+
+            })
 
             viewModel.getNetworkState().observe(this, Observer{ networkState ->
                 if (networkState != null) {
@@ -164,7 +183,7 @@ class HeadlinesFragment : Fragment() {
     }
 
     private fun refresh() {
-        viewModel.setParameter("", DEFAULT_SOURCE, "", "")
+        viewModel.setParameter("", sourceList, "", "")
         viewModel.refreshArticle().observe(this, Observer
                 { articles -> articleAdapter!!.submitList(articles) })
         binding.swipeRefresh.isRefreshing = false

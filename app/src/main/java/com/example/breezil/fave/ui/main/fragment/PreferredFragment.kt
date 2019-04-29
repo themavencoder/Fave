@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.example.breezil.fave.R
 import com.example.breezil.fave.callbacks.ArticleLongClickListener
@@ -32,6 +33,7 @@ import javax.inject.Inject
 
 import dagger.android.support.AndroidSupportInjection
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class PreferredFragment : Fragment() {
 
     @Inject
@@ -40,37 +42,40 @@ class PreferredFragment : Fragment() {
     lateinit var binding: FragmentPreferredBinding
     lateinit var viewModel: PreferredViewModel
     lateinit var sharedPreferences: SharedPreferences
-    internal var source: String? = null
 
 
-    internal var sortBy: String? = null
+    private var sortBy: String? = null
+    private var source: String = ""
 
-//    val sourceList: String
-//        get() {
-//            val sourceSet = HashSet<String>()
-//            sourceSet.add(getString(R.string.pref_sources_all_value))
-//
-//            val entries = ArrayList(Objects.requireNonNull(
-//                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
-//            val selectedSources = StringBuilder()
-//
-//            for (i in entries.indices) {
-//                selectedSources.append(entries[i]).append(",")
-//            }
-//
-//            if (selectedSources.length > 0) {
-//                selectedSources.deleteCharAt(selectedSources.length - 1)
-//            }
-//
-//
-//            return if (selectedSources.toString() == "") {
-//                source = "bbc-news,axios,cnn,daily-mail,espn"
-//            } else {
-//                source = selectedSources.toString()
-//
-//            }
-//
-//        }
+
+    private val sourceList: String
+        get() {
+
+            val sourceSet = HashSet<String>()
+            sourceSet.add(getString(R.string.pref_sources_all_value))
+
+            val entries = ArrayList((
+                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
+            val selectedSources = StringBuilder()
+
+            for (i in entries.indices) {
+                selectedSources.append(entries[i]).append(",")
+            }
+
+            if (selectedSources.isNotEmpty()) {
+                selectedSources.deleteCharAt(selectedSources.length - 1)
+            }
+
+
+
+            return if (selectedSources.isEmpty()) {
+                DEFAULT_SOURCE
+            } else {
+                selectedSources.toString()
+
+            }
+
+        }
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -80,11 +85,13 @@ class PreferredFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_preferred, container, false)
         binding.preferredList.setHasFixedSize(true)
         if (internetConnected()) {
-            binding.swipeRefresh.setOnRefreshListener({ this.refresh() })
+            binding.swipeRefresh.setOnRefreshListener { this.refresh() }
         }
+
         return binding.root
 
     }
@@ -92,7 +99,7 @@ class PreferredFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(PreferredViewModel::class.java)
         sortBy = sharedPreferences.getString(getString(R.string.pref_everything_sort_by_key), "")
 
@@ -133,7 +140,7 @@ class PreferredFragment : Fragment() {
                     R.color.colorblue, R.color.hotPink)
 
 
-            viewModel.setParameter("", DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
+            viewModel.setParameter("", sourceList, sortBy!!, todayDate, twoDaysAgoDate, "")
             viewModel.articlesList.observe(this, Observer{ articles -> articleAdapter!!.submitList(articles) })
 
             viewModel.getNetworkState().observe(this, Observer{ networkState ->
@@ -156,7 +163,7 @@ class PreferredFragment : Fragment() {
 
 
     private fun refresh() {
-        viewModel.setParameter("", DEFAULT_SOURCE, sortBy!!, todayDate, twoDaysAgoDate, "")
+        viewModel.setParameter("", sourceList, sortBy!!, todayDate, twoDaysAgoDate, "")
         viewModel.refreshArticle().observe(this, Observer
                 { articles -> articleAdapter!!.submitList(articles) })
         binding.swipeRefresh.isRefreshing = false

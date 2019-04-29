@@ -13,25 +13,23 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "article_table")
 data class Articles(
-        @SerializedName("author")
-        val author: String,
+
         @SerializedName("title")
-        val title: String,
+        var title: String?,
         @SerializedName("description")
-        val description: String,
+        var description: String?,
         @SerializedName("url")
-        val url: String,
+        var url: String?,
         @SerializedName("urlToImage")
-        val urlToImage: String,
+        var urlToImage: String?,
         @SerializedName("publishedAt")
-        val publishedAt: String,
+        var publishedAt: String?,
 
         @SerializedName("source")
         @Embedded
-        val source: Source,
+        var source: Source?
 
-        @SerializedName("content")
-        val content: String
+
 ): Parcelable {
 
         @IgnoredOnParcel

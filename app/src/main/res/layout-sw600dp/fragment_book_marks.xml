@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            app:spanCount="3"/>
+            app:spanCount="2"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/deleteAll"
             android:visibility="gone"

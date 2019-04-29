@@ -104,12 +104,25 @@ class ActionBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun startbookMark(article: Articles){
         if (activity != null && isAdded) {
+
+//            if(!article.title!!.isNotEmpty() && !article.description!!.isNotEmpty() && !article.url!!.isNotEmpty()
+//                    &&  !article.urlToImage!!.isNotEmpty() && !article.publishedAt!!.isNotEmpty() && !article.source!!.name.isNotEmpty()){
+//                val bookMarkViewModel = ViewModelProviders.of(this)
+//                        .get(BookMarkViewModel::class.java)
+//                val bookMark = BookMark( article.title!!, article.description!!,
+//                        article.url!!, article.urlToImage!!, article.publishedAt!!, article.source!!.name)
+//                bookMarkViewModel.insert(bookMark)
+//                Toast.makeText(this@ActionBottomSheetFragment.mContext, R.string.saved_bookmark, Toast.LENGTH_SHORT).show()
+//            }else{
+//                Toast.makeText(this@ActionBottomSheetFragment.mContext, "Cant save at this time sorry", Toast.LENGTH_SHORT).show()
+//            }
             val bookMarkViewModel = ViewModelProviders.of(this)
                     .get(BookMarkViewModel::class.java)
-            val bookMark = BookMark("", article.title, article.description,
-                    article.url, article.urlToImage, article.publishedAt, article.source.name, article.content)
+            val bookMark = BookMark( article.title!!, article.description!!,
+                    article.url!!, article.urlToImage!!, article.publishedAt!!, article.source!!.name)
             bookMarkViewModel.insert(bookMark)
             Toast.makeText(this@ActionBottomSheetFragment.mContext, R.string.saved_bookmark, Toast.LENGTH_SHORT).show()
+
         }
         dismiss()
     }

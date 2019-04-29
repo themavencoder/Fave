@@ -13,6 +13,7 @@ import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.SearchView
+import android.widget.Toast
 import com.example.breezil.fave.R
 import com.example.breezil.fave.callbacks.ArticleLongClickListener
 import com.example.breezil.fave.callbacks.ArticleClickListener
@@ -34,6 +35,8 @@ import javax.inject.Inject
 import dagger.android.AndroidInjection
 
 import com.example.breezil.fave.utils.Constant.Companion.DEFAULT_SOURCE
+import okhttp3.logging.HttpLoggingInterceptor
+import timber.log.Timber
 
 class SearchActivity : AppCompatActivity() {
 
@@ -48,8 +51,6 @@ class SearchActivity : AppCompatActivity() {
     internal var source: String? = null
 
     private var themeMode: Boolean = false
-
-
 
 
 
@@ -77,6 +78,9 @@ class SearchActivity : AppCompatActivity() {
         setUpViewmodel()
 
         search()
+        val logging = HttpLoggingInterceptor { message -> Timber.tag(getString(R.string.okhttp)).d(message) }
+        logging.redactHeader(getString(R.string.authorization))
+        logging.redactHeader(getString(R.string.cookie))
 
     }
 
@@ -92,7 +96,7 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    refresh(newText)
+//                    refresh(newText)
                 }
                 return true
             }
@@ -122,9 +126,12 @@ class SearchActivity : AppCompatActivity() {
     }
 
     fun setUpViewmodel() {
-        viewModel.setParameter("", DEFAULT_SOURCE, "", todayDate, twoDaysAgoDate, "")
+        viewModel.setParameter("", sourceList, "", todayDate, twoDaysAgoDate, "")
 
-        viewModel.articlesList.observe(this, Observer{ articles -> adapter?.submitList(articles) })
+        viewModel.articlesList.observe(this, Observer{ articles ->
+            adapter?.submitList(articles)
+
+        })
         viewModel.getNetworkState().observe(this, Observer{ networkState ->
             if (networkState != null) {
                 adapter?.setNetworkState(networkState)
@@ -133,9 +140,10 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun refresh(query: String) {
-        viewModel.setParameter(query, DEFAULT_SOURCE, "", todayDate, twoDaysAgoDate, "")
-        viewModel.articlesList.observe(this, Observer {
+        viewModel.setParameter(query, sourceList, "", todayDate, twoDaysAgoDate, "")
+        viewModel.refreshArticle().observe(this, Observer {
             adapter?.submitList(it)
+
         })
 
         viewModel.getNetworkState().observe(this, Observer {
@@ -204,33 +212,37 @@ class SearchActivity : AppCompatActivity() {
     }
 
 
-//    val sourceList: String
-//        get() {
-//            val sourceSet = HashSet<String>()
-//            sourceSet.add(getString(R.string.pref_sources_all_value))
-//
-//            val entries = ArrayList((
-//                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
-//            val selectedSources = StringBuilder()
-//
-//            for (i in entries.indices) {
-//                selectedSources.append(entries[i]).append(",")
-//            }
-//
-//            if (selectedSources.isNotEmpty()) {
-//                selectedSources.deleteCharAt(selectedSources.length - 1)
-//            }
-//
-//
-//
-//            return if (selectedSources.toString() == "") {
-//                source = DEFAULT_SOURCE
-//            } else {
-//                source = selectedSources.toString()
-//
-//            }
-//
-//        }
+
+
+
+    private val sourceList: String
+        get() {
+
+            val sourceSet = HashSet<String>()
+            sourceSet.add(getString(R.string.pref_sources_all_value))
+
+            val entries = ArrayList((
+                    sharedPreferences.getStringSet(getString(R.string.pref_source_key), sourceSet)))
+            val selectedSources = StringBuilder()
+
+            for (i in entries.indices) {
+                selectedSources.append(entries[i]).append(",")
+            }
+
+            if (selectedSources.isNotEmpty()) {
+                selectedSources.deleteCharAt(selectedSources.length - 1)
+            }
+
+
+
+            return if (selectedSources.isEmpty()) {
+                DEFAULT_SOURCE
+            } else {
+                selectedSources.toString()
+
+            }
+
+        }
 
 
 
