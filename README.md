@@ -1,6 +1,7 @@
 # Fave
 
 #### ![newspaper](https://user-images.githubusercontent.com/20865566/48871310-32f9e680-edb2-11e8-8dcf-75e6c70b8328.png)
+### 100% Kotlin
 Fave an awesome android app, That let users keep up with latest and favorite world news from any cable source around the world, This app let you sortby your favorite news source and mark news as bookmark to read later.
 Built with Android Architecture Components(MVVM) + Dagger2 + RxJava.
 [Api](https://en.wikipedia.org/wiki/Application_programming_interface) by [NewsApi](https://newsapi.org)
