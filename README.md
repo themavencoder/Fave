@@ -6,6 +6,11 @@ Fave an awesome android app, That let users keep up with latest and favorite wor
 Built with Android Architecture Components(MVVM) + Dagger2 + RxJava.
 [Api](https://en.wikipedia.org/wiki/Application_programming_interface) by [NewsApi](https://newsapi.org)
 
+Features:
+*	Explore any kind of news  
+*	Save news to bookmark
+*	Read full article from news source
+* Share news on social media
 
 #### This app is implements:
 - [Dagger](https://google.github.io/dagger/)
