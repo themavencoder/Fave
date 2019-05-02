@@ -21,7 +21,7 @@ tools:context=".ui.preference.SettingsActivity">
 
             <fragment
                 android:id="@+id/prefSettingsFragment"
-                android:name="com.example.breezil.fave.ui.preference.PrefFragment"
+                android:name="com.fave.breezil.fave.ui.preference.PrefFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/tenDP"
