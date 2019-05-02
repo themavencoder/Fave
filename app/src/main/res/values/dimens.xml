@@ -30,8 +30,10 @@
     <dimen name="twentyDP">20dp</dimen>
     <dimen name="twentyfiveDP">25dp</dimen>
     <dimen name="thirtyDP">30dp</dimen>
+    <dimen name="thirtyFiveDP">35dp</dimen>
 
     <dimen name="fiftyDP">50dp</dimen>
+    <dimen name="sixtyDP">60dp</dimen>
     <dimen name="fiftySixDP">56dp</dimen>
     <dimen name="OneFiftyDP">150dp</dimen>
     <dimen name="twoFiftyDP">250dp</dimen>
@@ -39,12 +41,21 @@
     <dimen name="threeHundredDP">300dp</dimen>
     <dimen name="threeHundredFiftyDP">350dp</dimen>
     <dimen name="fiveHundredDP">500dp</dimen>
-
+    <dimen name="twoHundredDp">200dp</dimen>
 
 
     <!--sp-->
-    <dimen name="sixteenSP">16sp</dimen>
+
+    <dimen name="eightSP">8sp</dimen>
+    <dimen name="tenSP">10sp</dimen>
     <dimen name="twelveSP">12sp</dimen>
+    <dimen name="fourteenSP">14sp</dimen>
+    <dimen name="sixteenSP">16sp</dimen>
+    <dimen name="eighteenSP">18sp</dimen>
+    <dimen name="twentyySP">20sp</dimen>
     <dimen name="twentyTwoSP">22sp</dimen>
+    <dimen name="twentyFourSP">24sp</dimen>
+    <dimen name="thirtyTwoSP">32sp</dimen>
+
 
 </resources>

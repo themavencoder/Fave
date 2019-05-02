@@ -10,9 +10,9 @@ tools:context=".ui.preference.SettingsActivity">
         >
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="@dimen/zeroDP"
+            android:layout_height="@dimen/zeroDP"
+            android:layout_marginTop="@dimen/tenDP"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/bottomNavViewBar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,17 +24,17 @@ tools:context=".ui.preference.SettingsActivity">
                 android:name="com.example.breezil.fave.ui.preference.PrefFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginStart="@dimen/tenDP"
+                android:layout_marginTop="@dimen/tenDP" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About"
-                android:textSize="20sp"
+                android:text="@string/about"
+                android:textSize="@dimen/twentyySP"
                 android:textColor="@color/colorAccent"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginTop="@dimen/twentyDP"
+                android:layout_marginStart="@dimen/thirtyDP"
                 android:id="@+id/aboutText"/>
         </LinearLayout>
 
@@ -42,8 +42,8 @@ tools:context=".ui.preference.SettingsActivity">
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavViewBar"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/zeroDP"
+            android:layout_height="@dimen/fiftyDP"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

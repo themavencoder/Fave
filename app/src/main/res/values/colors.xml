@@ -18,4 +18,6 @@
     <color name="dark2">#3030</color>
     <color name="faded">#FFF3F0</color>
     <color name="background">?attr/background</color>
+    <color name="progresstint">#208AFA</color>
+    <color name="viewBackground">#C4000000</color>
 </resources>

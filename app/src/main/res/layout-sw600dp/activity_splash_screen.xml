@@ -8,12 +8,12 @@
     tools:context=".ui.SplashScreenActivity">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/twoHundredDp"
+        android:layout_height="@dimen/twoHundredDp"
+        android:layout_marginBottom="@dimen/eightDP"
+        android:layout_marginEnd="@dimen/eightDP"
+        android:layout_marginStart="@dimen/eightDP"
+        android:layout_marginTop="@dimen/eightDP"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
