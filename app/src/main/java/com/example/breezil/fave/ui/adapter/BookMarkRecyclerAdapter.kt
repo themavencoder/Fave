@@ -15,6 +15,11 @@ import com.example.breezil.fave.callbacks.BookMarkClickListener
 import com.example.breezil.fave.callbacks.BookMarkLongClickListener
 import com.example.breezil.fave.databinding.ArticleItemBinding
 import com.example.breezil.fave.model.BookMark
+import android.text.Html
+import android.databinding.adapters.TextViewBindingAdapter.setText
+
+import com.example.breezil.fave.utils.helpers.HtmlTagHandler
+
 
 class BookMarkRecyclerAdapter(internal var context: Context, private val listener: BookMarkClickListener,
                               private val longClickListener: BookMarkLongClickListener) :
@@ -49,7 +54,7 @@ class BookMarkRecyclerAdapter(internal var context: Context, private val listene
             circularProgressDrawable.strokeWidth = 12f
             circularProgressDrawable.centerRadius = 60f
             circularProgressDrawable.setColorSchemeColors(R.color.colorAccent, R.color.colorPrimary,
-                    R.color.colorblue, R.color.hotPink)
+                    R.color.colorblue,R.color.hotPink)
             circularProgressDrawable.start()
             Glide.with(context)
                     .load(bookMark.urlToImage)
@@ -59,8 +64,9 @@ class BookMarkRecyclerAdapter(internal var context: Context, private val listene
                     .into(binding.articleImage)
 
 
-            binding.articleTitle.text = bookMark.title
+//            binding.articleTitle.text = bookMark.title
             binding.sourcesText.text = bookMark.source
+            binding.articleTitle.text = Html.fromHtml(bookMark.title, null, HtmlTagHandler())
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.v4.widget.CircularProgressDrawable
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.example.breezil.fave.databinding.ArticleItemBinding
 import com.example.breezil.fave.databinding.ItemNetworkStateBinding
 import com.example.breezil.fave.model.Articles
 import com.example.breezil.fave.repository.NetworkState
+import com.example.breezil.fave.utils.helpers.HtmlTagHandler
 
 
 class ArticleRecyclerViewAdapter(internal var context: Context, private val articleClickListener: ArticleClickListener,
@@ -48,6 +50,7 @@ class ArticleRecyclerViewAdapter(internal var context: Context, private val arti
 
         if (viewHolder is ArticleHolder) {
             val article = getItem(position)
+
             viewHolder.bind(article, articleClickListener, articleLongClickListener)
         } else {
             (viewHolder as NetworkStateItemViewHolder).bindView(networkState)
@@ -96,7 +99,9 @@ class ArticleRecyclerViewAdapter(internal var context: Context, private val arti
                 true
             }
 
-            binding.articleTitle.text = articles!!.title
+//            binding.articleTitle.text = articles!!.title
+
+            binding.articleTitle.text = Html.fromHtml(articles!!.title, null, HtmlTagHandler())
 
 
             circularProgressDrawable = CircularProgressDrawable(context)

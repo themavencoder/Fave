@@ -75,7 +75,8 @@ constructor(private var endpointRepository: EndPointRepository,
 
         val articlesList = ArrayList<Articles>()
         val articles = endpointRepository.getHeadline(country, sources, category, query,
-                TEN, params.key).subscribe({ articleResult -> onPaginationSuccess(articleResult, callback, params, articlesList) }, { throwable -> onPaginationError(throwable) })
+                TEN, params.key).subscribe({ articleResult -> onPaginationSuccess(articleResult,
+                callback, params, articlesList) }, { throwable -> onPaginationError(throwable) })
         compositeDisposable.add(articles)
     }
 
@@ -89,7 +90,7 @@ constructor(private var endpointRepository: EndPointRepository,
     override fun onInitialSuccess(response: ArticleResult,
                                   callback: PageKeyedDataSource.LoadInitialCallback<Int, Articles>,
                                   results: MutableList<Articles>) {
-        if (response.articles != null && response.articles.size > ZERO) {
+        if (response.articles.size > ZERO) {
             results.addAll(response.articles)
             callback.onResult(results, null, TWO)
             mInitialLoading.postValue(NetworkState.LOADED)
@@ -111,7 +112,7 @@ constructor(private var endpointRepository: EndPointRepository,
                                      callback: PageKeyedDataSource.LoadCallback<Int, Articles>,
                                      params: PageKeyedDataSource.LoadParams<Int>,
                                      results: MutableList<Articles>) {
-        if (response.articles != null && response.articles.size > ZERO) {
+        if (response.articles.size > ZERO) {
             results.addAll(response.articles)
 
             val key = (if (params.key > ONE) params.key + ONE else null)!!.toInt()

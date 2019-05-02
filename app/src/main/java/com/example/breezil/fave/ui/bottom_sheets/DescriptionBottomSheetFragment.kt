@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
 import android.support.v4.app.Fragment
 import android.support.v4.widget.CircularProgressDrawable
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.breezil.fave.databinding.FragmentDescriptionBottomSheetBindin
 import com.example.breezil.fave.model.Articles
 
 import com.example.breezil.fave.utils.Constant.Companion.ARTICLE
+import com.example.breezil.fave.utils.helpers.HtmlTagHandler
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,7 +69,8 @@ class DescriptionBottomSheetFragment : BottomSheetDialogFragment() {
                         .error(R.drawable.placeholder))
                 .into(binding.articleImage)
         binding.articleDescriptions.text = article.description
-        binding.articleTitle.text = article.title
+//        binding.articleTitle.text = article.title
+        binding.articleTitle.text = Html.fromHtml(article.title, null, HtmlTagHandler())
         binding.articleSource.text = article.source!!.name
 
     }

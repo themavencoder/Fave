@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
 import android.support.v4.app.Fragment
 import android.support.v4.widget.CircularProgressDrawable
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.breezil.fave.R
 import com.example.breezil.fave.databinding.FragmentBookMarkDescriptionBinding
 import com.example.breezil.fave.model.BookMark
 import com.example.breezil.fave.utils.Constant.Companion.BOOKMARK
+import com.example.breezil.fave.utils.helpers.HtmlTagHandler
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -69,7 +71,8 @@ class BookMarkDescriptionFragment : BottomSheetDialogFragment() {
                         .error(R.drawable.placeholder))
                 .into(binding.articleImage)
         binding.articleDescriptions.text = bookmark.description
-        binding.articleTitle.text = bookmark.title
+//        binding.articleTitle.text = bookmark.title
+        binding.articleTitle.text = Html.fromHtml(bookmark.title, null, HtmlTagHandler())
         binding.articleSource.text = bookmark.source
     }
 

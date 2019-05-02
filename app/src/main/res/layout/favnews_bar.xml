@@ -7,17 +7,18 @@
     android:background="?attr/actionbarcolor"
     android:theme="@style/AppTheme.AppBarOverlay"
     android:paddingTop="10dp">
-    <TextView
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:fontFamily="cursive"
-        android:textStyle="bold"
-        android:textSize="32sp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/colorWhite"
-        android:text="Fave"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="5dp"
+    android:layout_gravity="center_horizontal"
+    android:fontFamily="cursive"
+    android:drawableEnd="@mipmap/ic_feather"
+    android:text="Fave"
+    android:textColor="@color/colorWhite"
+    android:textSize="32sp"
+    android:textStyle="bold" />
 
 </android.support.v7.widget.Toolbar>

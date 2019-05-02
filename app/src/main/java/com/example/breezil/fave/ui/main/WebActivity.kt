@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,6 +21,7 @@ import com.example.breezil.fave.ui.BaseActivity
 
 import com.example.breezil.fave.utils.Constant.Companion.ARTICLE_TITLE
 import com.example.breezil.fave.utils.Constant.Companion.ARTICLE_URL
+import com.example.breezil.fave.utils.helpers.HtmlTagHandler
 
 class WebActivity : BaseActivity() {
 
@@ -47,7 +49,8 @@ class WebActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_web)
 
-        supportActionBar!!.title = getArticleTitle()
+//        supportActionBar!!.title = getArticleTitle()
+        supportActionBar!!.title =  Html.fromHtml(getArticleTitle(), null, HtmlTagHandler())
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         loadWeb(getArticleUrl()!!)

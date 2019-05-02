@@ -60,7 +60,7 @@ class MainActivity : DaggerAppCompatActivity(), HasSupportFragmentInjector {
         setupAdapter()
         setupBottomNavigation()
         setSupportActionBar(binding.mainToolbar as Toolbar)
-        supportActionBar!!.title = getString(R.string.app_name)
+        supportActionBar!!.title = ""
 
         val logging = HttpLoggingInterceptor { message -> Timber.tag(getString(R.string.okhttp)).d(message) }
         logging.redactHeader(getString(R.string.authorization))
